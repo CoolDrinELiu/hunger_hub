@@ -13,16 +13,19 @@
             <%= link_to "Sign in", new_session_path, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
           <% end %>
         </li>
-          <% if current_user.admin? %>
-            <li class="nav-item mx-0 mx-lg-1">
-              <%= link_to "New Food", new_food_path, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
-            </li>
-          <% end %>
-        <li class="nav-item mx-0 mx-lg-1">
-          <% if current_user %>
-            <%= link_to 'Sign Out', session_path(current_user.id), method: :delete, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
-          <% end %>
-        </li>
+        <% if current_user.admin? %>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to "New Food", new_food_path, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to_settings %>
+          </li>
+        <% end %>
+        <% if current_user %>
+          <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to 'Sign Out', session_path(current_user.id), method: :delete, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

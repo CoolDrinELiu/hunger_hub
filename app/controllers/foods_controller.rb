@@ -1,12 +1,11 @@
 class FoodsController < ApplicationController
+  before_action :require_admin, only: [:new, :create, :destroy]
+
   def new
     @food = Food.new
   end
 
   def create
-    if !current_user.admin?
-      redirect_to root_path, alert: "Cannot let you do that." and return
-    end
     @food = Food.create(food_params)
     if @food.valid?
       redirect_to root_path, notice: "All good!"
@@ -29,6 +28,6 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:name, :desc, :logo, :end_at)
+    params.require(:food).permit(:name, :desc, :logo)
   end
 end

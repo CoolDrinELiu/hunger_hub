@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       get :get_form
     end
   end
+  resources :subscriptions, only: [:create]
+  resources :settings, only: [:new, :edit, :create, :update]
 end

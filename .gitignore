@@ -17,6 +17,7 @@
 /config/redis.yml
 /config/secrets.yml
 /public/uploads
+/public/assets
 config/apns.pem
 .ruby-version
 dump.rdb

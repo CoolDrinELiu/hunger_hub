@@ -4,12 +4,50 @@
     <title>Hunger Hub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body id="page-top">
+    <%= render "layouts/nav_bar" %>
+    <div class="container" id="main-ct">
+      <%= bootstrap_flash %>
+      
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
+  <script>
+    window.addEventListener('DOMContentLoaded', event => {
+      var navbarShrink = function () {
+          const navbarCollapsible = document.body.querySelector('#mainNav');
+          if (!navbarCollapsible) {
+              return;
+          }
+          if (window.scrollY === 0) {
+              navbarCollapsible.classList.remove('navbar-shrink')
+          } else {
+              navbarCollapsible.classList.add('navbar-shrink')
+          }
+      };
+      navbarShrink();
+      // Shrink the navbar when page is scrolled
+      document.addEventListener('scroll', navbarShrink);
+      // Collapse responsive navbar when toggler is visible
+      const navbarToggler = document.body.querySelector('.navbar-toggler');
+      const responsiveNavItems = [].slice.call(
+          document.querySelectorAll('#navbarResponsive .nav-link')
+      );
+      responsiveNavItems.map(function (responsiveNavItem) {
+          responsiveNavItem.addEventListener('click', () => {
+              if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                  navbarToggler.click();
+              }
+          });
+      });
+  });
+
+  </script>
 </html>

@@ -16,5 +16,7 @@
 // const imagePath = (name) => images(name, true)
 import "bootstrap"
 import "../stylesheets/application"
-
-alert(1)
+import Rails from '@rails/ujs';
+var Turbolinks = require("turbolinks")
+Rails.start();
+Turbolinks.start()

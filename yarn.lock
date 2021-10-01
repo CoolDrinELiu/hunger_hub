@@ -4240,6 +4240,11 @@ jest-worker@^25.4.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jquery-ujs@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.npmmirror.com/jquery-ujs/download/jquery-ujs-1.2.3.tgz#dcac6026ab7268e5ee41faf9d31c997cd4ddd603"
+  integrity sha1-3KxgJqtyaOXuQfr50xyZfNTd1gM=
+
 js-base64@^2.1.8:
   version "2.6.4"
   resolved "https://registry.npmjs.org/js-base64/-/js-base64-2.6.4.tgz"
@@ -7395,8 +7400,8 @@ tunnel-agent@^0.6.0:
 
 turbolinks@^5.2.0:
   version "5.2.0"
-  resolved "https://registry.npmjs.org/turbolinks/-/turbolinks-5.2.0.tgz"
-  integrity sha512-pMiez3tyBo6uRHFNNZoYMmrES/IaGgMhQQM+VFF36keryjb5ms0XkVpmKHkfW/4Vy96qiGW3K9bz0tF5sK9bBw==
+  resolved "https://registry.nlark.com/turbolinks/download/turbolinks-5.2.0.tgz#e6877a55ea5c1cb3bb225f0a4ae303d6d32ff77c"
+  integrity sha1-5od6VepcHLO7Il8KSuMD1tMv93w=
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"

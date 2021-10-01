@@ -17,6 +17,9 @@
 import "bootstrap"
 import "../stylesheets/application"
 import Rails from '@rails/ujs';
-var Turbolinks = require("turbolinks")
 Rails.start();
+
+var Turbolinks = require("turbolinks")
 Turbolinks.start()
+
+require('jquery')

@@ -1,8 +1,10 @@
 <div class="col-md-6 col-lg-4 mb-5">
-    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-        <div class="portfolio-item-caption d-flex align-items-center justify-content-center">
-            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+    <%= link_to get_form_food_path(record), remote: true do %>
+      <div class="portfolio-item mx-auto">
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-center w-100 h-100">
+          <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
         </div>
-        <%= image_tag record.logo.url, class: "img-fluid" %>
-    </div>
+          <%= image_tag record.logo.url, class: "img-fluid"%>
+      </div>
+    <% end %>
 </div>

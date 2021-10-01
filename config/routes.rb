@@ -11,5 +11,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :foods, only: [:new, :destroy, :create]
+  resources :foods, only: [:new, :destroy, :create] do
+    member do
+      get :get_form
+    end
+  end
 end

@@ -22,9 +22,13 @@ class FoodsController < ApplicationController
       redirect_to root_path, notice: "Removed"
     end
   end
+
+  def get_form
+    @food = Food.find params[:id]
+  end
   private
 
   def food_params
-    params.require(:food).permit(:name, :desc, :logo)
+    params.require(:food).permit(:name, :desc, :logo, :end_at)
   end
 end

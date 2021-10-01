@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  app: &web_base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'hunger_app'
+    depends_on:
+      - database
+      - redis
+    ports:
+      - "3000:3000"
+    command: /app/bin/docker-start
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/app/node_modules
+      - ./log:/app/log
+      - ./tmp:/app/tmp
+    env_file: .env
+  database:
+    container_name: 'hunger_pg'
+    image: postgres:12.1
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    env_file: .env
+  redis:
+    container_name: 'hunger_redis'
+    image: redis:5.0.7
+
+  sidekiq:
+    <<: *web_base
+    container_name: 'hunger_sidekiq'
+    depends_on:
+      - app
+      - database
+      - redis
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/app/node_modules
+    env_file: .env
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    ports: []
+volumes:
+  gem_cache:
+  db_data:
+  node_modules:

@@ -1,0 +1,19 @@
+:concurrency: 5
+:pidfile: tmp/pids/sidekiq.pid
+
+:queues:
+    - default
+:limits:
+  default: 20
+:schedule:
+  hb_reader_job:
+    # cron: "0 3 * * *"
+    every: '50s'
+    class: Schedules::HbReaderJob
+    description: 'Huobi data'
+development:
+  :concurrency: 5
+staging:
+  :concurrency: 5
+production:
+  :concurrency: 20

@@ -48,6 +48,7 @@ RUN yarn install
 COPY . ./
 
 RUN yarn cache clean && \
+  cp /usr/share/zoneinfo/Australia/Sydney /etc/localtime &&\
   rm -rf node_modules tmp/cache vendor/assets test && \
   rm -rf /home/app/rails-app/vendor/cache &&\
   rm -rf '/var/cache/apk/*' '/tmp/*'

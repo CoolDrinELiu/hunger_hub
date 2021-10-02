@@ -11,7 +11,8 @@ module HungerHub
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    config.time_zone = 'Beijing'
+    config.time_zone = 'Australia/Sydney'
+    config.active_record.default_timezone = :local
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

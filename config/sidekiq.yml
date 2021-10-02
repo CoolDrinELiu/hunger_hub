@@ -5,6 +5,11 @@
     - default
 :limits:
   default: 20
+:schedule:
+  rank_score_job:
+    every: '4h'
+    class: Schedules::RankScoreJob
+    description: 'Rank Score'
 development:
   :concurrency: 5
 staging:

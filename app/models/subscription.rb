@@ -1,10 +1,11 @@
 class Subscription < ApplicationRecord
+  belongs_to :food, counter_cache: :fav_count
   after_commit :generate_order, on: :create
 
   scope :unprocessed, -> {where(order_id: nil)}
 
   def self.get_start_since
-    Setting.first.cut_off_at >= Time.now ? Date.tomorrow : Setting.first.cut_off_at + 8.days
+    Setting.first.cut_off_at >= Time.now ? Date.tomorrow : Setting.first.cut_off_at.next_week.beginning_of_week.to_date
   end
 
   def self.bulk_generate_orders

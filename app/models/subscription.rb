@@ -20,11 +20,13 @@ class Subscription < ApplicationRecord
   private
 
   def generate_order
-    start_since = Subscription.get_start_since
-    ApplicationRecord.transaction do
-      r = Order.create!(start_since: start_since, user_id: user_id)
-      OrderWithFood.create!(food_id: food_id, qty: qty, subscription_id: id)
-      update!(order_id: r.id)
+    if Setting.count == 1
+      start_since = Subscription.get_start_since
+      ApplicationRecord.transaction do
+        r = Order.create!(start_since: start_since, user_id: user_id)
+        OrderWithFood.create!(food_id: food_id, qty: qty, subscription_id: id)
+        update!(order_id: r.id)
+      end
     end
   end
 end

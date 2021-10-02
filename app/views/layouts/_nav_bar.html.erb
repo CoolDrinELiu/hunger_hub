@@ -4,11 +4,15 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#plans">PLANS</a>
+          <% if controller_name == "home" %>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#plans">PLANS</a>
+          <% else %>
+            <%= link_to 'PLANS', root_path, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
+          <% end %>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
           <% if current_user %>
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#plans"><%= current_user.name %></a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#"><%= current_user.name %></a>
           <% else %>
             <%= link_to "Sign in", new_session_path, class: "nav-link py-3 px-0 px-lg-3 rounded" %>
           <% end %>

@@ -22,9 +22,6 @@ class FoodsController < ApplicationController
     end
   end
 
-  def get_form
-    @food = Food.find params[:id]
-  end
   private
 
   def food_params

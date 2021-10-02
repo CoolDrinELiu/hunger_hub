@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_login
-    redirect_to new_session_path, alert: "Please login in." unless session.include? :user_id
+    redirect_to new_session_path, alert: "Please login in." and return unless session.include? :user_id
   end
 
   def current_user
@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    redirect_to root_path, alert: "Sorry, Can do that." and return if !current_user.admin?
+    redirect_to root_path, alert: "Sorry, Can do that." and return if !current_user&.admin?
   end
 end

@@ -5,12 +5,6 @@
     - default
 :limits:
   default: 20
-:schedule:
-  hb_reader_job:
-    # cron: "0 3 * * *"
-    every: '50s'
-    class: Schedules::HbReaderJob
-    description: 'Huobi data'
 development:
   :concurrency: 5
 staging:

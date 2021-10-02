@@ -3,4 +3,5 @@ class User < ApplicationRecord
 
   enum role: {admin: 0, fold: 1}
 
+  has_many :subscriptions
 end

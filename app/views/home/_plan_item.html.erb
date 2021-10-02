@@ -1,5 +1,6 @@
 <div class="col-md-6 col-lg-4 mb-5">
-    <%= link_to get_form_food_path(record), remote: true do %>
+  <% if current_user %>
+    <%= link_to get_form_subscriptions_path(food_id: record.id), remote: true do %>
       <div class="portfolio-item mx-auto">
         <div class="portfolio-item-caption d-flex align-items-center justify-content-center w-100 h-100">
           <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
@@ -7,4 +8,11 @@
           <%= image_tag record.logo.url, class: "img-fluid"%>
       </div>
     <% end %>
+  <% else %>
+    <%= link_to new_session_path do %>
+      <div class="portfolio-item mx-auto">
+        <%= image_tag record.logo.url, class: "img-fluid"%>
+      </div>
+    <% end %>
+  <% end %>
 </div>

@@ -13,10 +13,13 @@
             </div>
             <%= image_tag @food.logo.url, class: "img-fluid rounded mb-5" %>
             <p class="mb-4"><%= @food.desc %></p>
-            <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                <i class="fas fa-times fa-fw"></i>
-                Close Window
-            </button>
+            <%= form_for @sub do |f| %>
+              <%= f.hidden_field :food_id, value: @food.id %>
+              <%= f.label :qty, "Qty", class: "col-sm-2 col-form-label"%>
+              <%= f.text_field :qty, class: "form-control w-25 m-auto text-center" %>
+              <br>
+              <%= f.submit "Subscribe!", class: "btn btn-outline-primary" %>
+            <% end %>
           </div>
         </div>
       </div>

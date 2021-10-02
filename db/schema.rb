@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_165558) do
+ActiveRecord::Schema.define(version: 2021_10_02_064141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 2021_10_01_165558) do
     t.string "name"
     t.string "logo"
     t.string "desc"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_with_foods", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "food_id"
+    t.integer "qty"
+    t.integer "subscription_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "category", default: 0
+    t.integer "user_id"
+    t.date "start_since"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_10_01_165558) do
     t.datetime "cut_off_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "job_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|

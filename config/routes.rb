@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :foods, only: [:new, :destroy, :create] do
-    member do
+  resources :foods, only: [:new, :destroy, :create]
+  resources :subscriptions, only: [:create, :new] do
+    collection do
       get :get_form
     end
   end
-  resources :subscriptions, only: [:create]
   resources :settings, only: [:new, :edit, :create, :update]
 end

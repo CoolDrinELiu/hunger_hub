@@ -1,13 +1,11 @@
 class SubscriptionsController < ApplicationController
   def create
-    if current_user.subscriptions.create(sub_params)
+    record = current_user.subscriptions.create(sub_params)
+    if record.valid?
       redirect_back fallback_location: root_path, notice: 'Success!'
     else
       redirect_to root_path, alert: 'Failed.'
     end
-  end
-
-  def new
   end
 
   def get_form

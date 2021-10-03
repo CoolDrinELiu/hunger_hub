@@ -32,7 +32,6 @@ RSpec.describe FoodsController, type: :controller do
 
       it 'should redirect with an alert with missing with attributes' do
         post :create, params: {food: {name: "Test", desc: "Desc"}}
-        expect(response).to redirect_to root_path
         expect(Food.count).to eq 0
       end
     end

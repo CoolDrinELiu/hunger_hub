@@ -1,4 +1,6 @@
 class Subscription < ApplicationRecord
+  validates :food_id, :user_id, presence: true
+
   belongs_to :food, counter_cache: :fav_count
   after_commit :generate_order, on: :create
 

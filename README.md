@@ -1,4 +1,4 @@
-若以docker启动，需先创建数据库，以及需要设置的环境变量，再执行make update
+若以docker启动，需先创建数据库，以及需要设置的环境变量到.env中，再执行make update
 
 DATABASE_NAME=hunger_hub_development
 
